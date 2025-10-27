@@ -34,3 +34,43 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Comments API
+
+Next.js 14 App Router API for creating and fetching comments using **Prisma (MongoDB)** and **Zod** validation.
+
+### Endpoints
+
+#### **POST `/api/comments`**
+Create a new comment.
+
+**Body:**
+```json
+{ "name": "Name", "email": "example@gmail.com", "comment": "This is a test comment." }
+```
+
+**Response:**
+```json
+{ "id": "...", "name": "Amanjeet", "email": "aman@vt.edu", "comment": "This is a test comment.", "createdAt": "..." }
+```
+---
+#### **GET `/api/comments`**
+Fetch 50 most recent comments (with pagination).
+Offset - starting index (default 0)
+
+**Example**
+```bash
+GET /api/comments
+GET /api/comments?offset=50
+```
+**Response:**
+```json
+{ "items": [...], "offset": 50, "limit": 50, "total": 126 }
+```
+---
+**Setup**
+```bash
+npm install
+npx prisma generate
+npm run dev
+```
